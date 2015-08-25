@@ -1,0 +1,71 @@
+Explains how to properly set up your path variable from java and android development.
+
+= Problem =
+
+Trying to execute java or android commands from the command prompt and receiving the following error:
+
+'RANDOM_COMMAND' is not recognized as an internal or external command,
+operable program or batch file.
+
+This is because your computer's path isnt set correctly.
+
+
+= Solution =
+
+First we need to open up the Environmental Variables window. To do this:
+
+# Right Click on "My Computer" 
+# Select Properties
+# Click the "Advanced" Tab
+# Click the "Environmental Variables" button located at the bottom.
+
+In the System Variables Pane, find the Path variable and select edit.
+
+*VERY IMPORTANT*
+Do no delete what is already in your path variable.
+
+
+=== For Java ===
+
+If you have Java installed, locate your most current jdk\bin folder. Mine is located at
+
+C:\Program Files\Java\jdk1.6.0_07\bin
+
+Inside this directory, is all the jars you need for compiling, running, and using the keytool which you'll need for creating android api keys.
+
+Copy the entire directory path which should be similiar to "C:\Program Files\Java\jdk1.6.0_07\bin"
+
+Navigate back to your Path Variable.
+
+Put a ";" at the end of what is already in the contents of the Path's "Variable Value."
+
+After inserting the semicolon, paste your java directory listing.
+
+Select "OK" Twice and you are done.
+
+To test if you have successfully added Java to your path, open the command prompt and type "javac" and press enter. If "javac" is recognized and a huge listing of javac options appear then you have done it correctly.
+
+
+=== For Android ===
+
+If you have installed/pasted the android sdk directory somewhere find where it is located. This is user specific so it won't be the same for everyone. Inside the android folder navigate to your tools folder, and copy the entire directory path.
+
+Mine is *C:\Program Files\Android*\android-sdk-windows-1.5_r2\tools, but what is shown as *bold* will be different depending on where your android sdk is.
+
+Navigate to your path variable and select "edit." Place a semicolon at the end of what is already in your Path's "Variable Value" and paste the directory path for your android sdk\tools.
+
+Select "OK" Twice and you are done.
+
+To test if you have successfully added the Android SDK to your path, open the command prompt and type "adb" and press enter.  If "adb" is recognized and a huge listing of abd options appear then you have done it correctly.
+
+
+==Finally==
+
+At the end of this your Path "Variable Value" should look similar to this:
+
+%SystemRoot%\system32;%SystemRoot%;C:\Program Files\Java\jdk1.6.0_07\bin;C:\Program Files\Android\android-sdk-windows-1.5_r2\tools
+
+However, depending on what was already stored in the path value, what version of the java jdk you have, and where you store your android sdk it can look different.
+ 
+
+ 

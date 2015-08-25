@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <FrameLayout 
+            	xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/mapFrame" android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+			</FrameLayout>
+			<LinearLayout android:id="@+id/gameContent2"
+				android:orientation="vertical" 
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+            	<TableLayout 
+            		xmlns:android="http://schemas.android.com/apk/res/android"
+            		android:id="@+id/scoreTable"
+    				android:layout_width="fill_parent"
+    				android:layout_height="fill_parent"
+    				android:stretchColumns="1,3" >
+   					<TableRow>
+        				<TextView
+            				android:layout_column="1"
+            				android:text="Position"
+            				android:gravity="left"
+            				android:padding="3dip" />
+        				<TextView
+        					android:text="User Name"
+        					android:layout_column="2"
+        					android:gravity="center"
+        					android:padding="3dip" />
+        				<TextView
+            				android:text="Score"
+            				android:layout_column="3"
+            				android:gravity="right"
+            				android:padding="3dip" />
+    				</TableRow>
+    
+    				<TableRow>
+    					<View
+        					android:layout_height="2dip"
+        					android:background="#FF909090" />
+    				</TableRow>
+
+    				<TableRow>
+        				<TextView
+        					android:id="@+id/scoreRow0"
+            				android:layout_column="1"
+            				android:text="1st"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow0User"
+            				android:layout_column="1"
+            				android:text="Name"
+            				android:gravity="center"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow0Score"
+            				android:layout_column="1"
+            				android:text="Score"
+            				android:gravity="right"
+            				android:padding="3dip" />
+    				</TableRow>
+
+    				<TableRow>
+        				<TextView
+        					android:id="@+id/scoreRow1"
+            				android:layout_column="1"
+            				android:text="2nd"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow1User"
+            				android:layout_column="1"
+            				android:text="Name"
+            				android:gravity="center"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow1Score"
+            				android:layout_column="1"
+            				android:text="Score"
+            				android:gravity="right"
+            				android:padding="3dip" />
+    				</TableRow>
+
+    				<TableRow>
+        				<TextView
+							android:id="@+id/scoreRow2"
+            				android:layout_column="1"
+            				android:text="3rd"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow2User"
+            				android:layout_column="1"
+            				android:text="Name"
+            				android:gravity="center"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow2Score"
+            				android:layout_column="1"
+            				android:text="Score"
+            				android:gravity="right"
+            				android:padding="3dip" />
+    				</TableRow>
+
+    				<TableRow>
+        				<TextView
+        					android:id="@+id/scoreRow3"
+            				android:layout_column="1"
+            				android:text="4th"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow3User"
+            				android:layout_column="1"
+            				android:text="Name"
+            				android:gravity="center"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow3Score"
+            				android:layout_column="1"
+            				android:text="Score"
+            				android:gravity="right"
+            				android:padding="3dip" />
+    				</TableRow>
+
+    				<TableRow>
+        				<TextView
+        					android:id="@+id/scoreRow4"
+            				android:layout_column="1"
+            				android:text="5th"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow4User"
+            				android:layout_column="1"
+            				android:text="Name"
+            				android:gravity="center"
+            				android:padding="3dip" />
+            				<TextView
+        					android:id="@+id/scoreRow4Score"
+            				android:layout_column="1"
+            				android:text="Score"
+            				android:gravity="right"
+            				android:padding="3dip" />
+    				</TableRow>
+				</TableLayout>
+
+			</LinearLayout>
+			<LinearLayout android:id="@+id/gameContent3"
+				android:orientation="vertical" 
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+            	<TextView 
+                	android:id="@+id/status"
+                	android:layout_width="fill_parent"
+                	android:layout_height="fill_parent" 
+                	android:text="player status info goes here" />
+            </LinearLayout>
+    	</FrameLayout>
+    </LinearLayout>
+</TabHost>

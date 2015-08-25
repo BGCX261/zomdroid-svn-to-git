@@ -1,0 +1,92 @@
+#Zomdroid To Do List
+
+= Introduction =
+
+This is a to do list of all things we need to do to get a good first iteration going. Hopefully this will also get us organized and make it easier to divide up work so we can get this done. Also, I've included _Optional Items_ which will be noted in _italics_ for extra things that would be nice to have in the program but should only be attempted after completing the necessary items.
+
+
+= Details =
+
+==GUI==
+
+===Opening Screen Page===
+
+Description: The first page shown when the zomdroid application opens. 
+
+Graphical Contents:
+  # About *Button*
+  # Start *Button*
+  # Exit *Button*
+  # _Register *Button*_
+
+===About Page (Completed by Corey)===
+
+Description: Gives a brief synopsis of the game.
+
+Content: 
+  # About Game *Textview*
+
+===Zomdroid Page===
+
+Description: Shows users information (Status, Score, _inventory_). Also has buttons to access the "Map" and "Top Score Page". 
+
+Contents:
+  # User Status (Zomdroid/Human), Score *TextView*
+  # _Inventory_
+  # Map *Button*
+  # Top Score *Button*
+
+===Map Page===
+
+Description: Shows a map with all registered players illustrated as pinpoints, one color for zombies and another for humans. _Also, have a pop-up side bar that shows all the players including relevant info (username, gpx, gpy). If possible number the pinpoints on the map and have the sidebar show this number too in order to better identify players and their coords.
+
+Contents:
+  # *Mapview*
+  # _Pop-Up SideBar_
+
+===Top Score Page===
+
+Description: List of all the players and their scores
+
+Contents:
+  # Player Scores *TextView*
+
+
+==Services==
+
+===UpdateLocation (Server)===
+
+Description: Send players coords to zomdroid server.
+
+Url: http://lyle.smu.edu/~coyle/php/zomdroid/updateLoc.php
+
+Parameters Expected:
+  # user
+  # gpx
+  # gpy
+  # status
+  # score
+
+Data Returned:
+  XML for all users:
+  # username
+  # gpx
+  # gpy
+  # status
+  # score
+
+===Get Users (Server)===
+
+Description: HttpRequest to zomdroid server to receive all players info.
+
+Url: http://lyle.smu.edu/~coyle/php/zomdroid/getAllUsers.php
+
+===Alert You're A Zombie (Client)===
+
+Description: Performed on the phone. If a zombie comes within a specified range of a human, the human automatically becomes the zombie. Notify the the player via a pop-up window, toast window, notification, vibration. etc
+
+===Calculate Score (Client)===
+Description: Calculate the players score.
+
+Human:  X amount of points per time unit as a human
+Zombie: X amount of points per Human Infected

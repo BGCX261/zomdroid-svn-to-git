@@ -1,0 +1,11 @@
+#labels Phase-Requirements
+= Zomdroid Version 0.7=
+
+We are looking at Monday June 22 to come up with a first shot on Zomdroid.
+Hopefully, this version 0.7 will be a basis for propelling other development forward.
+The functionality we are going for includes
+
+Two players Human and Zombie
+  * When zombie gets within distance x of human, human becomes zombie
+  * Uses UI, GPS, Google Maps
+  * More to come later

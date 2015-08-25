@@ -1,0 +1,74 @@
+Publishing Project to android phone
+
+==1. Obtain a private key==
+
+source: http://developer.android.com/guide/publishing/app-signing.html
+
+Here's an example of a Keytool command that generates a private key:
+
+* $ keytool -genkey -v -keystore my-release-key.keystore 
+-alias alias_name -keyalg RSA -validity 10000 *
+
+==2. Use the private key you just generated to get an MD5 fingerprint==
+
+source: http://code.google.com/android/add-ons/google-apis/mapkey.html#getfingerprint
+
+Here's an example of a Keytool command that generates an MD5 certificate fingerprint for the key alias_name in the keystore my-release-key.keystore:
+
+* $ keytool -list -alias alias_name -keystore my-release-key.keystore *
+
+Keytool will prompt you to enter passwords for the keystore and key. As output of the command, Keytool prints the fingerprint to the shell. For example:
+
+Certificate fingerprint (MD5): 94:1E:43:49:87:73:BB:E6:A6:88:D7:20:F1:8E:B5:98 
+Once you have the fingerprint, you can go to the Maps API registration site, described next.
+
+
+==3. Register the certificate fingerprint with Google Maps Service==
+@ http://code.google.com/android/maps-api-signup.html
+
+==4. Add you registered api key to your application==
+
+Adding the Maps API Key to your Application
+Once you've registered with the Google Maps service and have obtained a Maps API Key, you must add it to your application's MapView objects, so that the Maps server will allow them to download Maps tiles. 
+
+For _MapView_ elements declared in XML layout files, add the Maps API Key as the value of a special attribute — android:apiKey. For example: 
+
+{{{
+<com.google.android.maps.MapView
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:enabled="true"
+ android:clickable="true"
+ android:apiKey="example_Maps_ApiKey_String"
+ />
+}}}
+
+For MapView objects instantiated directly from code, pass the Maps API Key string as a parameter in the constructor. For example: 
+
+mMapView = new MapView(this, "example_Maps_ApiKey_String");
+
+
+===*_Be Sure to Save and Build Project with new API KEY_*===
+
+==5. Export your application== 
+
+In Eclipse, right click on your project and select "Android Tools"--->"Export Signed Application Package..."
+
+Follow the wizard and supply the information you used when creating the private key
+
+==6. Connect your android phone to your computer via usb==
+
+==7. Download the android phone driver==
+
+for windows go here: http://www.anddev.org/download.php?id=449 
+
+When windows tries to install the driver point it to search for the unzipped file you just downloaded.
+
+==7. Installing your application onto the phone==
+
+Open up cmd and navigate to your android sdk tools directory. 
+
+* $ adb install {{{<path_to_apk>}}} *
+
+
+==8. Run App==

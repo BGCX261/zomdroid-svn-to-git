@@ -1,0 +1,31 @@
+#labels Phase-Design
+#Using the built in ticket tracking service
+
+= Why To Do =
+
+I think it would be beneficial if we all started using the built-in ticket tracking service. It will help us keep a running TODO list, and let others know what bugs/needed features you have discovered that they may not know about.
+
+As class ends, this will especially help those of us that want to continue working on this project.
+
+
+= What To Do =
+
+== Creating a Ticket ==
+
+If you find any bug, or think of a needed feature, make a ticket! It is that simple. Use the following guidelines when making a ticket:
+
+  * Use a descriptive title, keep it short though
+  * Be as thorough as possible in the description, we need to know: 
+    * what the problem is
+    * how to reproduce the problem
+    * your opinions on how to fix it (where applicable)
+    * if it was an exception, try and post some of the log file or traceback
+  * try and apply all applicable labels to the ticket
+  * keep yourself as the owner initially, even if you don't plan on fixing it
+  * if you plan on fixing it, keep the status as accepted. Otherwise set it to *new*
+
+== Solving a Ticket ==
+
+Ok, so you want to solve a ticket. First step, change the owner to yourself. Next, change the status to accepted. This lets others know that you plan on fixing this problem. 
+
+When the ticket has been solved, and everybody agrees on this, close the ticket. This ensures that the open tickets are a running TODO list, and don't get cluttered with ones that are not applicable. 

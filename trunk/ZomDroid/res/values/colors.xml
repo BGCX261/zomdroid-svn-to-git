@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="opaque_red">#f00</color>
+	<color name="translucent_red">#80ff0000</color>
+	<color name="opaque_green">#0f0</color>
+	<color name="blood_red">#8e0c04</color>
+	<color name="zomDroid_green">#00aa55</color>
+    <drawable name="solid_red">#f00</drawable>
+    <drawable name="solid_blue">#0000ff</drawable>
+    <drawable name="solid_green">#f0f0</drawable>
+</resources>

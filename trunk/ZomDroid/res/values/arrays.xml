@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="updateIntervals">
+		<item>10 seconds</item>
+		<item>1 minute</item>
+		<item>5 minutes</item>
+		<item>15 minutes</item>
+		<item>30 minutes</item>
+	</string-array>
+	<string-array name="updateIntervalValues">
+		<item type='long'>10000</item>
+		<item type='long'>60000</item>
+		<item type='long'>300000</item>
+		<item type='long'>900000</item>
+		<item type='long'>1800000</item>
+	</string-array>
+	<string-array name="gameNames">
+		<item>Game1</item>
+		<item>Game2</item>
+		<item>Game3</item>
+		<item>Game4</item>
+		<item>Game5</item>
+	</string-array>
+	<string-array name="UserNames">
+		<item type='String'>Tester1</item>
+		<item type='String'>Tester2</item>
+		<item type='String'>Tester3</item>
+		<item type='String'>Tester4</item>
+		<item type='String'>Tester5</item>
+	</string-array>
+	<string-array name="Scores">
+		<item type='long'>10000</item>
+		<item type='long'>20000</item>
+		<item type='long'>30000</item>
+		<item type='long'>40000</item>
+		<item type='long'>50000</item>
+	</string-array>
+</resources>

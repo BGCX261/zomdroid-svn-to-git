@@ -1,0 +1,49 @@
+How to create an Google Map's API Key for your emulator.
+
+= Introduction =
+
+This wiki assumes you have already set up your path variable to include Java and your Android SDK. If you have not already done this, please see that wiki on how to do so.
+
+
+== Find Your debug.keystore ==
+
+In order to make an API Key, first you need to get an MD5 fingerprint. To get this, you have to use Java's "keytool" to extract it from the debug.keystore.
+
+# Find your debug.keystore. This can be tricky find a folder probably located @ C:\Documents and Settings\"INSERT_USER_NAME_HERE"\.android
+# Inside of that folder you should see the debug.keystore file
+# To make things easier, copy the debug.keystore to your root C: drive.
+
+== Make a MD5 Fingerprint ==
+
+# Open the command prompt
+# Type the following:
+
+{{{ keytool.exe -list -alias androiddebugkey -keystore "C:\debug.keystore" -storepass android -keypass android  }}}
+
+If you typed it in correctly, you should see something like:
+
+androiddebugkey, Jun 4, 2009, PrivateKeyEntry,
+Certificate fingerprint (MD5): 0F:18:85:BF:75:B6:54:61:C1:4C:98:64:1E:8D:AD:17
+
+== Get API KEY ==
+
+# Go to  http://code.google.com/android/maps-api-signup.html 
+# Enter your generated MD5 Fingerprint
+# Accept Agreement
+# Submit
+# Copy and Save your API Key
+
+== Add API Key to your application ==
+
+
+Adding the Maps API Key to your Application Once you've registered with the Google Maps service and have obtained a Maps API Key, you must add it to your application's MapView? objects, so that the Maps server will allow them to download Maps tiles. 
+For MapView? elements declared in XML layout files, add the Maps API Key as the value of a special attribute — android:apiKey. For example: 
+
+{{{
+<com.google.android.maps.MapView android:layout_width="fill_parent" android:layout_height="fill_parent" android:enabled="true" android:clickable="true" android:apiKey="example_Maps_ApiKey_String" />
+}}}
+For MapView objects instantiated directly from code, pass the Maps API Key string as a parameter in the constructor. For example: 
+{{{
+mMapView = new MapView?(this, "example_Maps_ApiKey_String?"); 
+}}}
+*Be Sure to Save and Build Project with new API KEY*

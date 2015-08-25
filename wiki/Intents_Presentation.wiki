@@ -1,0 +1,5 @@
+#summary A little bit about Intents in Android
+
+= Intents in Android =
+
+See the presentation here: http://docs.google.com/Present?docid=ddxtj6nb_25r3d7kq74&hl=en

@@ -1,0 +1,33 @@
+#summary This page describes how to use zomdroid.properties to set the phone number and map api key.
+
+= Introduction =
+
+Because the phone number and Google Maps API key must be unique for each developer, we cannot hard-code these into ZomDroid and commit to SVN.  The Android Emulator in Eclipse always has the same phone number, so the server would only have one user.
+
+To get around this, we can use a properties file outside the project space (not in SVN).
+
+= Details =
+
+Here are the steps to get this working:
+  # Make sure the emulator is not running
+  # Make sure the Android tools directory is in your path [http://developer.android.com/sdk/1.5_r2/installing.html]
+  # Create c:\temp (if it doesn't already exist)
+  # Create a file called zomdroid.properties
+  # Put two lines in the file:
+    # phone=1234567890 (must be unique number, so use your real phone number)
+    # mapkey=<Key you get for Google Maps API>
+  # In Eclipse, go to Window->Show View->Ant
+  # Right-click->Add buildfiles...
+  # Choose build.xml in the ZomDroid directory
+  # You should see the buildfile with two operations
+  # Double-click on make.sdcard.  This will make a 256M SD card image called sd.img in c:\temp
+  # Go to Run->Run Configurations...
+  # Click on the ZomDroid run configuration under Android Application
+  # Click on the Target tab
+  # Under "Additional Emulator Command Line Options", write "-sdcard c:\temp\sd.img" (this is also in our book on page 112-113)
+  # Start the emulator with the ZomDroid run configuration
+  # Go back to the Ant view and double-click on load.properties
+
+Once this is done, you should be able to see the zomdroid.properties file in your emulator.  To do this, open the program list on the emulator, go to Dev Tools->Terminal Emulator, and type "ls /sdcard"
+
+ZomDroid will use these values to seed the phone number and map api key.

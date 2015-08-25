@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, ZomDroid!</string>
+	<string name="app_name">ZomDroid</string>
+	<string name="aboutcontent">Ahh! The end is nigh! The Zombie virus has
+		become a pandemic, and it is up to you to survive. Use your map to
+		avoid known zombies, lest you will be bitten by one.</string>
+	<string name="aboutTitle">About Zomdroid</string>
+	<string name="menuTitle">Main Menu</string>
+	<string name="newButtonText">New Game</string>
+	<string name="joinButtonText">Join Game</string>
+	<string name="aboutButtonText">About</string>
+	<string name="exitButtonText">Exit</string>
+	<string name="goButtonText">Go</string>
+	<string name="debugCheckText">Debug</string>
+	<string name="scoreText">Score: 0</string>
+	<string name="mapButtonText">Show Map</string>
+	<string name="scoreButtonText">Top Scores</string>
+	<string name="settingsLabel">Settings</string>
+	<string name="updateInterval">Update Interval</string>
+	<string name="gameList">Available Games</string>
+	<string name="updateSummary">Click for update interval options</string>
+	<string name="debugTitle">Debug Mode</string>
+	<string name="debugSummary">Sends random mock location updates</string>
+	<string name="GPS_prompt">Choose an update interval</string>
+	<string name="generalPrefs">Choose starting type</string>
+</resources>

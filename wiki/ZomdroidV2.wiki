@@ -1,0 +1,83 @@
+#labels ZomdroidV2
+#Ideas for Version 2
+
+= Introduction =
+
+Proposed plan for forking the game into a V2 where the goal is to minimize the state that is maintained on Android by moving state to the server. Each time the Android device connects to the server, all information needed is delivered to the device.
+
+
+= Details =
+ZomDroid V2
+
+A fine effort was made by the  June ZomDroid developers! We now have a working game based on an exploration of many of the aspects of the ZomDroid platform. The question now is, where to go from here and how to leverage the energy of the distance team  who have been patiently waiting for a some code to work on. 
+
+During the last week the issue of game state arose, both as a challenge and a problem. The focus of the class has been developing an understanding of Android and one of the tricky issues is maintaining state for an application. At any time, Android may shut down an app and destroy any objects that have been instantiated. This means that one must store any data that the app is maintaining when the app’s onPause()  method is called. This of course, is doable and was done in V1 but adds to the complexity of the app. Looking ahead at a Zomdroid V2 fork, and looking behind at V1, it seems that an interesting exercise would be to create a fork for V2 and explore how the game might run with no client state, moving all state and policy decisions to the server. This would of course, greatly simplify the Android code (and make the server code more complex). But given the great disparity in processing power between Android device and server, this could be an advantage. It could also provide a basis for the distance gang to tackle V2.
+The challenge, of course, is to provide an interesting game experience. But what is that experience? During the month, there were many different viewpoints expressed about rules and how the game be played. But if we leave those decisions to some yet to be defined PolicyObject on the server, then the door is open to having a variety of different “games” defined by modifying the server policy for a game.
+
+SO let’s step back and think about the impact of saving nothing on the client and minimizing what the client sends the server, using the server to maintain game state. Also, let’s assume the android client sends only three pieces of data:
+1)	Phone number (as ID)
+2)	GPX
+3)	GPY
+
+What are the assumptions the server makes? For simplicity let’s assume:
+ ONE default global game. By default,  any client that contacts the server with id and gpsLocation is placed in the default global game. [Later, we can add a gameID parameter to place the client into a different game, but for now there is one game.]
+A.	Three states for a player: Human, Infected, Zombie
+B.	Players start as Human. The Zombie id is set by the server (via the web at first, later by an Android module). Still just trying to keep things simple.
+C.	If human comes within XX feet of Zombie, Human becomes INFECTED. The XX feet is set in a config file on the server. Server uses gps locations to determine if zombie and human are close enough for infection to occur.
+D.	After YY minutes, INFECTED becomes ZOMBIE. YY value set by config file on server. 
+
+Still keeping it simple, there is no way to  prevent infection. In later version, there are ways to prevent infection – i.e. taking photo of UPC codes of bandaids etc.
+SO, given the above assumptions, what is the game experience?
+Scenario 1: User Plays game
+PRECONDITIONS:
+A.	Server has a default game defined with a zombie at some location
+B.	User has GPS available
+Scenario
+1)	User starts Zomdroid
+2)	PhoneID, GPSX&Y sent to server via HTTP call to server: updateLoc?phone=21426255252&gpx=3.22&gpy=4.34
+3)	List of ALL players sent back to phone
+4)	Phone displays all players on Map with different indicators for SELF, Humans, Infected, Zombies (or any other future states devised)
+5)	Periodically, the client sends phoneId & GPSLoc to server and the server sends the List of players back to client. Client updates map showing new locations of all players. It is up to the client to display different players based on state and to do anything else (play music, vibrate etc.)
+
+Goals:
+Working in the context of this simple framework, there are several tasks that can be taken up by V2 participants with the goals of:
+a)	Learning more about Android
+b)	Creating a baseline game framework that can evolve to more complex games
+c)	Examine the performance difference between ZomDroid V1 and this new V2
+Tasks:
+a)	Fork Version 1 and refactor existing source code to handle new server-based state model. Primary  code for reuse will be gps position determination,  http communication with server and map display.
+b)	Create multimedia for various states. For example, when player is INFECTED, play music/vibrate phone to inform user.
+c)	Set up test suite to test android code 
+d)	Set up test suite to test server code.
+e)	Do performance measurement on different design options.
+f)	Design option where infected player takes picture of UPC code of specific items and acquires health.
+g)	Design Shotgun feature where player can call up Shotgun interface and fire shotgun resulting in simulated shotgun sound. (There is such an app for the iPhone where the accelerometer is used to cock the phone and fire the phone, just like a shotgun. Since accelerometer is not a given for Android, this could be simulated and integrated into the game.
+Server Side Programming
+Currently drC is working on the server code for Version 2.  For now, assume a default game (no id needed). The anticipated services and params will be:
+•	newGame 
+removes all players from the default game and resets the default game with a zombie player with phone 666.666.6666 and gps position on smu campus
+o	returns PlayerList (should have one zombie player)
+•	newGame?phone=xxxxxxxx&gpx=yyyy&gpy=zzzzz
+sets up new default game with zombie at some GPS location and with some phone number
+o	returns PlayerList (should have one zombie player)
+•	updateLoc?phone=xxx&gpx=yyyy&gpy=zzzzz
+o	if no game exists, calls newGame and sets up new game with default zombie
+o	if game exists, adds player to default game OR update position of player already in the game
+o	return PlayerList – server may change player state to INFECTED or ZOMBIE depending on proximity to zombie or time passing as INFECTED
+
+Player List
+PlayerList is the data structure returned by the server to Android. The current structure of the PLayerList is XML:
+
+<?xml version="1.0"?>
+<users>
+<user phoneId="2146751111" gpx="12.2" gpy="123.34" datetime="2009-07-02: 03:57:15pm" score="10" zhtype="human" nickname="crx"/>
+<user phoneId="2147778654" gpx="12.2" gpy="123.34" datetime="2009-07-02: 03:57:21pm" score="10" zhtype="human"  nickname="bob"/>
+<user phoneId="6666666666" gpx="12.2" gpy="123.34" datetime="2009-07-02: 03:57:45pm" score="10" zhtype="zombie"  nickname="zomb"/>
+</users>
+
+For simplicity now, assume the score will not change and the nickname will be assigned by the server. The intent is that the nickname will be displayed on the map rather than the phone number.
+
+Refactoring:
+An interesting task would be to look at non-XML server data delivery (perhaps JSON) and measure the performance difference (JSON vs XML). Basically, instead of Android parsing the XML, the server could parse the XML and deliver the data in another text format. An unknown question is how much faster and less memory intensive, that might be.
+
+

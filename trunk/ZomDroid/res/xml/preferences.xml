@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@android:id/tabhost" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<TabWidget android:id="@android:id/tabs"
+			android:layout_width="fill_parent" android:layout_height="wrap_content" />
+		<FrameLayout android:id="@android:id/tabcontent"
+			android:layout_width="fill_parent" android:layout_height="fill_parent">
+			<LinearLayout android:id="@+id/content1"
+				android:orientation="vertical" android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+				<TextView android:id="@+id/textview1" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/generalPrefs" />
+				<RadioGroup android:id="@+id/radioType"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:orientation="vertical" android:checkedButton="@+id/radioHuman">
+					<RadioButton android:id="@+id/radioHuman"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:text="human" />
+					<RadioButton android:id="@+id/radioZombie"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:text="zombie" />
+				</RadioGroup>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/content2"
+				android:orientation="vertical" android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+				<TextView android:id="@+id/textview2" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/updateSummary" />
+				<Spinner android:id="@+id/spinner" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:drawSelectorOnTop="true"
+					android:prompt="@string/GPS_prompt" />
+			</LinearLayout>
+			<LinearLayout android:id="@+id/content3"
+				android:orientation="vertical" android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+				<TextView android:id="@+id/textview3" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/debugSummary" />
+				<CheckBox android:id="@+id/checkbox" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:text="@string/debugTitle" />
+			</LinearLayout>
+		</FrameLayout>
+	</LinearLayout>
+</TabHost>
